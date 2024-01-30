@@ -9,4 +9,9 @@ export class AllLeaguesController {
   getAll() {
     return this.allLeaguesService.getAll()
   }
+
+  @Get('popular')
+  getPopular() {
+    return this.allLeaguesService.getPopular()
+  }
 }
