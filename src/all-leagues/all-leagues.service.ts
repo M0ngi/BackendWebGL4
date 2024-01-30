@@ -14,7 +14,6 @@ export class AllLeaguesService {
   getPopular() {
     return this.apiService.get().pipe(
       map((res) => {
-        // @ts-ignore
         return res.popular
       })
     )

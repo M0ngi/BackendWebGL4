@@ -16,9 +16,9 @@ export class ApiClientService {
     this.baseUrl = `${this.configService.getMiscConfig().baseApi}/${route}`
   }
 
-  get<T = any>(opts?: GetHttpAction): Observable<AxiosResponse<T, any>> {
+  get<T = any>(opts?: GetHttpAction): Observable<any> {
     const { url, config } = opts ?? {};
-    return this.httpService.get<AxiosResponse<T, any>>(`${this.baseUrl}/${url ?? ''}`, config).pipe(
+    return this.httpService.get<any>(`${this.baseUrl}/${url ?? ''}`, config).pipe(
       map(res => {
         return res.data
       })
