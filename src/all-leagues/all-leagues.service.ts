@@ -18,4 +18,15 @@ export class AllLeaguesService {
       })
     )
   }
+
+  getByCountry() {
+    return this.apiService.get().pipe(
+      map((res) => {
+        return [
+          ...res.international,
+          ...res.countries,
+        ]
+      })
+    )
+  }
 }

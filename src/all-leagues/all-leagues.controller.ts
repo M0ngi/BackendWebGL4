@@ -14,4 +14,9 @@ export class AllLeaguesController {
   getPopular() {
     return this.allLeaguesService.getPopular()
   }
+
+  @Get('country')
+  getByCountry() {
+    return this.allLeaguesService.getByCountry()
+  }
 }
