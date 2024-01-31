@@ -8,6 +8,7 @@ export interface IMiscConfig {
   nodeEnv: string;
   port: number;
   baseApi: string;
+  searchApi: string;
 }
 
 enum NodeEnv {
@@ -19,6 +20,10 @@ class MiscEnv {
   @Expose()
   @IsString()
   BASE_FOTMOB_API: string;
+
+  @Expose()
+  @IsString()
+  SEARCH_FOTMOB_API: string;
 
   @Expose()
   @IsString()
@@ -42,5 +47,6 @@ export const miscConfig = registerAs('miscConfig', (): IMiscConfig => {
     nodeEnv: config.NODE_ENV,
     port: config.BACKEND_PORT,
     baseApi: config.BASE_FOTMOB_API,
+    searchApi: config.SEARCH_FOTMOB_API,
   };
 });

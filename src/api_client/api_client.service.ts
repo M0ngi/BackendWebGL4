@@ -4,16 +4,17 @@ import { HttpService } from '@nestjs/axios';
 import { AxiosResponse } from 'axios';
 import { Observable, map } from 'rxjs';
 import { GetHttpAction, PatchHttpAction, PostHttpAction } from './types';
+import { AvailableAPIs } from './available-apis.enum';
 
 @Injectable()
 export class ApiClientService {
   private readonly baseUrl: string;
   constructor(
     route: string,
-    private configService: ConfigService,
     private httpService: HttpService,
+    apiLink: string,
   ) {
-    this.baseUrl = `${this.configService.getMiscConfig().baseApi}/${route}`
+    this.baseUrl = `${apiLink}/${route}`
   }
 
   get<T = any>(opts?: GetHttpAction): Observable<any> {

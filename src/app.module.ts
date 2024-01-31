@@ -9,6 +9,7 @@ import { TeamsModule } from './teams/teams.module';
 import { AppConfigModule } from '@app_config/config.module';
 import { ApiClientModule } from './api_client/api_client.module';
 import { AllLeaguesModule } from './all-leagues/all-leagues.module';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AllLeaguesModule } from './all-leagues/all-leagues.module';
     LeaguesModule,
     ApiClientModule,
     AllLeaguesModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],
