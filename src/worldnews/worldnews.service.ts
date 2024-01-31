@@ -1,6 +1,7 @@
 import { ApiClientService } from '@api_client/api_client.service';
 import { Inject, Injectable } from '@nestjs/common';
 import { GetNewsOptions } from './dto/get-news-options.dto';
+import { map } from 'rxjs';
 
 @Injectable()
 export class WorldnewsService {
@@ -29,6 +30,8 @@ export class WorldnewsService {
           startIndex: (options.page ?? 0) * 20,
         },
       },
-    });
+    }).pipe(
+      map((val) => val.data)
+    );
   }
 }
