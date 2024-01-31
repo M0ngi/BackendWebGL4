@@ -27,7 +27,7 @@ export class WorldnewsService {
           language: options.lang,
           type: "league",
           ...options,
-          startIndex: (options.page ?? 0) * 20,
+          startIndex: ((options.page ?? 1) - 1) * 20,
         },
       },
     }).pipe(
