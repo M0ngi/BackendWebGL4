@@ -16,4 +16,19 @@ export class WorldnewsService {
       }
     })
   }
+
+  async getNewsByLeague(leagueId: number, options: GetNewsOptions) {
+    return this.apiService.get({
+      route: "tlnews",
+      config: {
+        params: {
+          id: leagueId,
+          language: options.lang,
+          type: "league",
+          ...options,
+          startIndex: (options.page ?? 0) * 20,
+        },
+      },
+    });
+  }
 }

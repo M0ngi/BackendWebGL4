@@ -8,18 +8,16 @@ import { AvailableAPIs } from './available-apis.enum';
 
 @Injectable()
 export class ApiClientService {
-  private readonly baseUrl: string;
   constructor(
-    route: string,
+    private route: string,
     private httpService: HttpService,
-    apiLink: string,
+    private apiLink: string,
   ) {
-    this.baseUrl = `${apiLink}/${route}`
   }
 
   get<T = any>(opts?: GetHttpAction): Observable<any> {
-    const { url, config } = opts ?? {};
-    return this.httpService.get<any>(`${this.baseUrl}/${url ?? ''}`, config).pipe(
+    const { url, config, route } = opts ?? {};
+    return this.httpService.get<any>(`${this.apiLink}/${route ?? this.route}/${url ?? ''}`, config).pipe(
       map(res => {
         return res.data
       })
@@ -27,8 +25,8 @@ export class ApiClientService {
   }
 
   post<T = any>(opts?: PostHttpAction): Observable<AxiosResponse<T, any>> {
-    const { url, data, config } = opts ?? {};
-    return this.httpService.post<AxiosResponse<T, any>>(`${this.baseUrl}/${url ?? ''}`, data, config).pipe(
+    const { url, data, config, route } = opts ?? {};
+    return this.httpService.post<AxiosResponse<T, any>>(`${this.apiLink}/${route ?? this.route}/${url ?? ''}`, data, config).pipe(
       map(res => {
         return res.data
       })
@@ -36,8 +34,8 @@ export class ApiClientService {
   }
 
   patch<T = any>(opts?: PatchHttpAction): Observable<AxiosResponse<T, any>> {
-    const { url, data, config } = opts ?? {};
-    return this.httpService.patch<AxiosResponse<T, any>>(`${this.baseUrl}/${url ?? ''}`, data, config).pipe(
+    const { url, data, config, route } = opts ?? {};
+    return this.httpService.patch<AxiosResponse<T, any>>(`${this.apiLink}/${route ?? this.route}/${url ?? ''}`, data, config).pipe(
       map(res => {
         return res.data
       })
