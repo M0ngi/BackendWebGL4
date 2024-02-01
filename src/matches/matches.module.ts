@@ -10,7 +10,7 @@ import { ApiClientModule } from '@api_client/api_client.module';
   controllers: [MatchesController],
   providers: [
     MatchesService,
-    ApiClientModule.ServiceProvider("matches"),
+    ApiClientModule.ServiceProvider(""),
   ]
 })
 export class MatchesModule { }
